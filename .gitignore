@@ -3,9 +3,8 @@ node_modules/
 
 # IDE and Editor settings
 .idea/
-.junie/
 
-# Production build outputs (Vite standard)
+# Production build outputs
 dist/
 dist-ssr/
 
@@ -18,6 +17,3 @@ dist-ssr/
 
 # Logs
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
