@@ -2,7 +2,7 @@
 
 
 body {
-    background-image: url("/bg/wallpaper-day.jpg");
+    background-image: url("/bg/wallpaper-night.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,7 +10,7 @@ body {
 
 
 html {
-    font-size: 18px;
+    font-size: 17px;
 }
 
 

@@ -120,7 +120,7 @@ export const dockApps = [
 
 ];
 
-
+//terminal
 export const techStack = [
     {
         category : "Frontend",
@@ -181,3 +181,29 @@ export const WINDOW_CONFIG = {
     txtfile : { isOpen:false,zIndex:INITIAL_Z_INDEX ,data : null},
     imgfile : { isOpen:false,zIndex:INITIAL_Z_INDEX ,data : null},
 };
+
+
+//safari
+export const blogPost = [
+    {
+        id:1,
+        date : "Feb 21, 2026",
+        title:"Something i would love to talk about",
+        image : "/images/blog.png",
+        link : "#url"
+    }  ,
+    {
+        id:2,
+        date : "Feb 21, 2026",
+        title:"Something i would love to talk about",
+        image : "/images/blog.png",
+        link : "#url"
+    }  ,
+    {
+        id:3,
+        date : "Feb 21, 2026",
+        title:"Something i would love to talk about",
+        image : "/images/blog.png",
+        link : "#url"
+    }  ,
+];

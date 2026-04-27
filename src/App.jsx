@@ -4,6 +4,7 @@ import Dock from "#components/dock/Dock.jsx";
 import gsap from "gsap";
 import {Draggable} from "gsap/Draggable";
 import {TerminalWindow} from "#windows/Terminal.jsx";
+import {SafariWindow} from "#windows/Safari.jsx";
 
 gsap.registerPlugin(Draggable);
 
@@ -15,6 +16,7 @@ function App() {
             <Dock/>
 
             <TerminalWindow/>
+            <SafariWindow/>
 
         </main>
     )

@@ -8,7 +8,7 @@ const Terminal = () => {
         <div className="w-full h-full bg-white rounded-xl overflow-hidden flex flex-col font-mono text-sm shadow-2xl">
 
             {/* Window Header */}
-            <div className="relative flex items-center px-2 py-2.5 bg-[#f5f5f5] border-b border-gray-200">
+            <div className="relative flex items-center px-2 py-3 bg-[#f5f5f5] border-b border-gray-200">
                 <div>
                     <WindowsControls target="terminal"/>
                 </div>
@@ -19,7 +19,7 @@ const Terminal = () => {
             </div>
 
             {/* Terminal Body */}
-            <div className="p-2.5 flex-1 text-gray-800">
+            <div className="p-3 flex-1 text-gray-800">
 
                 <p className="mb-2 text-black">
                     <span className="font-bold">@ifham % </span>
@@ -75,7 +75,7 @@ const Terminal = () => {
 
 export const TerminalWindow = WindowWrapper(Terminal, 'terminal',
     {width: 600,
-        height: 360,
+        height: 350,
         x: 700,
         y:180
     });
