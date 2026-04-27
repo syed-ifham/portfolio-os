@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+
+body {
+    background-image: url("/bg/wallpaper-day.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+html {
+    font-size: 18px;
+}
+
+
+@layer base {
+    main {
+        @apply w-dvw h-dvh overflow-hidden flex flex-col;
+    }
+}
