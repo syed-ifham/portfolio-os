@@ -2,9 +2,9 @@ import { Search, Wifi, BatteryMedium, User } from 'lucide-react';
 
 //nav constants
 export const navLinks = [
-    {id:1,title:"Projects" , url:"#url"},
-    {id:2,title:"Contacts" , url:"#url"},
-    {id:3,title:"Resume", url:"#url"},
+    {id:1,title:"Projects" , type:"finder",isOpen:false},
+    {id:2,title:"Contacts" , type:"contact",isOpen:false},
+    {id:3,title:"Resume", type:"resume",isOpen:false},
 ];
 
 export const STATUS_BAR_ICONS = [

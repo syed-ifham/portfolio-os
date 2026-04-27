@@ -34,7 +34,7 @@ export const WindowWrapper = (Component, windowKey, options = {}) => {
             gsap.fromTo(
                 el,
                 { scale: 0.8, opacity: 0, y: 200 },
-                { scale: 1, opacity: 1, y: 0, duration: 0.3, ease:"expo" }
+                { scale: 1, opacity: 1, y: 0, duration: 0.25, ease:"power3.out" }
             );
 
             const [instance] = Draggable.create(el, {

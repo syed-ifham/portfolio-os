@@ -1,6 +1,10 @@
 import {navLinks} from "#constants";
+import {useWindowStore} from "#store/window.jsx";
 
 const NavbarLeft = () => {
+
+    const {openWindow} = useWindowStore();
+
 
     return (
         <div className="flex items-center gap-3">
@@ -14,6 +18,9 @@ const NavbarLeft = () => {
                 {
                     navLinks.map((link)=>(
                         <li key={link.id}
+
+                            onClick={()=>openWindow(link.type)}
+
                             className="cursor-pointer text-xs font-normal hover:bg-black/10 hover:underline px-2 rounded transition-colors">
                             <a href={link.url}>
                                 {link.title}
