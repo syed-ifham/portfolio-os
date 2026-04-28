@@ -5,10 +5,12 @@ import { blogPost } from "#constants/index.js";
 
 const Safari = () => {
     return (
-        <div className="w-full h-full bg-white rounded-xl overflow-hidden flex flex-col text-sm shadow-2xl">
+        <div className="w-full h-full bg-white rounded-xl overflow-hidden
+        flex flex-col text-sm shadow-2xl">
 
             {/*Header*/}
-            <div className="relative flex items-center justify-between px-4 py-2 bg-[#f6f6f6] border-b border-gray-200 text-gray-500">
+            <div className="relative flex items-center justify-between
+             px-4 py-2 bg-[#f6f6f6] border-b border-gray-200 text-gray-500">
 
                 {/* Left Section*/}
                 <div className="flex items-center gap-4 w-50">

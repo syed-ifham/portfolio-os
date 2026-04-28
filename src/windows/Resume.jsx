@@ -6,6 +6,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import {Tooltip} from "#components/utility/Tooltip.jsx";
+import {LOCATIONS} from "#constants";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -17,7 +18,7 @@ const Resume = () => {
         <div className="w-full h-full bg-white rounded-xl  flex flex-col shadow-2xl">
 
             {/* Window Header */}
-            <div className="relative flex justify-between items-center px-4 py-1.5 bg-[#f6f6f6] border-b border-gray-200 rounded-t-xl">
+            <div className="relative flex justify-between items-center px-4 py-1 bg-[#f6f6f6] border-b border-gray-200 rounded-t-xl">
                 <div className="w-25">
                     <WindowsControls target="resume" />
                 </div>
@@ -44,7 +45,8 @@ const Resume = () => {
 
             <div className="flex-1 overflow-y-auto bg-[#e5e5e5] flex justify-center py-1.5">
                 <Document
-                    file="/files/resume.pdf"
+                    // file="/files/resume.pdf"
+                    file={LOCATIONS.files.resume}
                     className="flex flex-col items-center drop-shadow-lg"
                     loading={<div className="text-gray-500 text-sm">Loading PDF...</div>}
                     error={<div className="text-red-500 text-sm">Failed to load PDF. Check the path!</div>}

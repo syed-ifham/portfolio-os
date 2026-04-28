@@ -78,15 +78,6 @@ export const dockApps = [
     },
 
     {
-        id:"explorer",
-        name:"Explorer",
-        icon:"/icons/explorer.avif",
-        canOpen:true
-
-    },
-
-
-    {
         id:"photos",
         name:"Gallery",
         icon:"/icons/gallery.avif",
@@ -147,10 +138,286 @@ export const techStack = [
     },
 ];
 
+export const LOCATIONS = {
+        files : {
+            resume : "/files/resume.pdf",
+        },
 
+        finder : {
 
-export const locations = {
+            WORK_LOCATION : {
+                id : 1,
+                type:"work",
+                name : "Work",
+                icon : "/icons/work.png",
+                kind :"folder",
+                children : [
+                    //> project 1
+                    {
+                        id:101,
+                        name: "Cal AI",
+                        icon : "/icons/mac-folder.png",
+                        kind:"folder",
+                        position : {
+                            top:50,
+                            left:300,
+                        },
+                        windowPosition : "top-[15vh] right-20",
+                        children : [
+                            {
+                                id:1010,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+                        ],
+                    },//end of project 1
 
+                    //> project 2
+                    {
+                        id:102,
+                        name: "Expense Tracker",
+                        icon : "/icons/mac-folder.png",
+                        kind:"folder",
+                        position : {
+                            top:10,
+                            left:50,
+                            right:0,
+                            bottom:0,
+                        },
+                        windowPosition : "top-[20vh] right-15",
+                        children : [
+                            {
+                                id:1020,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+                        ],
+                    },//end of project 2
+
+                    //> project 2
+                    {
+                        id:103,
+                        name: "Portfolio OS",
+                        icon : "/icons/mac-folder.png",
+                        kind:"folder",
+                        position : {
+                            top:150,
+                            left:100,
+                            right:0,
+                            bottom:0,
+                        },
+                        windowPosition : "top-[20vh] right-15",
+                        children : [
+                            {
+                                id:1030,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+                        ],
+                    },//end of project 2
+
+                ],//end of child
+
+            }, // end of work
+
+            ABOUT_LOCATION  : {
+                id : 2,
+                type:"about",
+                name : "About",
+                icon : "/icons/info.png",
+                kind :"folder",
+                children : [
+                    {
+                        id:201,
+                        name: "who am i",
+                        icon : "/icons/file.png",
+                        kind:"folder",
+                        position : "top-10 left-5",
+                        windowPosition : "top-[15vh] right-20",
+                        children : [
+                            {
+                                id:2010,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+
+                        ],
+                    },//end of project 1
+
+                    {
+                        id:202,
+                        name: "hackathon",
+                        icon : "/icons/file.png",
+                        kind:"folder",
+                        position : "top-30 left-30",
+                        windowPosition : "top-[15vh] right-20",
+                        children : [
+                            {
+                                id:2010,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+
+                        ],
+                    },//end of project 1
+
+                    {
+                        id:203,
+                        name: "skills",
+                        icon : "/icons/file.png",
+                        kind:"folder",
+                        position : "top-10 left-60",
+                        windowPosition : "top-[15vh] right-20",
+                        children : [
+                            {
+                                id:2010,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+
+                        ],
+                    },//end of project 1
+
+                ],//end of child
+
+            },
+
+            RESUME_LOCATION  :{
+                id : 3,
+                type:"resume",
+                name : "Resume",
+                icon : "/icons/file.png",
+                kind :"folder",
+                children : [
+                  // resume section
+                    {
+                        id:5,
+                        name: "resume.pdf",
+                        icon : "/icons/resume.png",
+                        kind:"folder",
+                        position : "top-10 left-10",
+                        windowPosition : "top-[15vh] right-20",
+
+                    },//end of project 1
+
+                ],//end of child
+
+            },
+
+            TRASH_LOCATION : {
+                id : 4,
+                type:"trash",
+                name : "Trash",
+                icon : "/icons/trash.png",
+                kind :"folder",
+                children : [
+                    //> project 1
+                    {
+                        id:5,
+                        name: "Application Name",
+                        icon : "/icons/file.png",
+                        kind:"folder",
+                        position : "top-10 left-5",
+                        windowPosition : "top-[15vh] right-20",
+                        children : [
+                            {
+                                id:1,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+
+                            {
+                                id:2,
+                                name : "Project Name.txt",
+                                icon : "/icons/#",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+                        ],
+                    },//end of project 1
+
+                ],//end of child
+
+            },
+        },
+
+};
+
+export const FINDER_LOCATION = {
+    work : LOCATIONS.finder.WORK_LOCATION,
+    about : LOCATIONS.finder.ABOUT_LOCATION,
+    resume : LOCATIONS.finder.RESUME_LOCATION,
+    trash : LOCATIONS.finder.TRASH_LOCATION
 }
 
 export const Z_INDEX = {
@@ -162,7 +429,7 @@ export const Z_INDEX = {
 export const INITIAL_Z_INDEX = 10;
 
 
-// window items
+// windows items
 export const WINDOW_CONFIG = {
 
     "group-apps": { isOpen:false,zIndex:INITIAL_Z_INDEX ,data : null},

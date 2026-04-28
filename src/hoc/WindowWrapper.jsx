@@ -39,7 +39,7 @@ export const WindowWrapper = (Component, windowKey, options = {}) => {
 
             const [instance] = Draggable.create(el, {
                 type: "x,y",
-                // Prevents the user from dragging the window off the screen
+                // Prevents the user from dragging the windows off the screen
                 // bounds: "body",
 
                 bounds: {
@@ -49,7 +49,7 @@ export const WindowWrapper = (Component, windowKey, options = {}) => {
                     height: window.innerHeight - 35
                 },
 
-                // Brings window to front when clicked
+                // Brings windows to front when clicked
                 onPress: () => focusWindow(windowKey),
             });
 
