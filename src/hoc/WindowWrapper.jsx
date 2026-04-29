@@ -11,7 +11,6 @@ export const WindowWrapper = (Component, windowKey, options = {}) => {
     const Wrapped = (props) => {
 
         //re-renders all dock app when focused,close,open
-
         // const { focusWindow, windows } = useWindowStore();
         // const windowState = windows[windowKey];
 

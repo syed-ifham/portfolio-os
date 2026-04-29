@@ -144,7 +144,6 @@ export const LOCATIONS = {
         },
 
         finder : {
-
             WORK_LOCATION : {
                 id : 1,
                 type:"work",
@@ -162,7 +161,7 @@ export const LOCATIONS = {
                             top:50,
                             left:300,
                         },
-                        windowPosition : "top-[15vh] right-20",
+                        windowPosition : "top-[50vh] left-50",
                         children : [
                             {
                                 id:1010,
@@ -208,7 +207,7 @@ export const LOCATIONS = {
                             right:0,
                             bottom:0,
                         },
-                        windowPosition : "top-[20vh] right-15",
+                        windowPosition : "top-[20vh] left-40",
                         children : [
                             {
                                 id:1020,
@@ -247,6 +246,7 @@ export const LOCATIONS = {
                         name: "Portfolio OS",
                         icon : "/icons/mac-folder.png",
                         kind:"folder",
+                        windowPosition : "top-[30vh] left-80",
                         position : {
                             top:150,
                             left:100,
@@ -380,7 +380,6 @@ export const LOCATIONS = {
                         kind:"pdf",
                         position : "top-10 left-10",
                         windowPosition : "top-[15vh] right-20",
-
                     },
 
                 ],//end of child

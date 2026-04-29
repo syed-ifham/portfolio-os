@@ -60,7 +60,7 @@ const Contact = () => {
                 </div>
 
                 {/* Social Cards */}
-                <ul className="flex flex-col  sm:flex-row gap-3 pt-2">
+                <ul className="flex flex-col  sm:flex-row gap-3 pt-6">
                     {socials.map((item)=> (
                         <li
                             key={item.id}
@@ -90,6 +90,6 @@ const Contact = () => {
 }
 
 export const ContactWindow = WindowWrapper(Contact, 'contact',{
-    height:350,
+    height:380,
     width:600,
 });
