@@ -6,7 +6,6 @@ export const WindowsControls = ({ target }) => {
     return (
         <div className="flex items-center gap-2">
 
-            {/*requires app id*/}
             <button
                 onClick={() => closeWindow(target)}
 

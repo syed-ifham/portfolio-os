@@ -167,10 +167,25 @@ export const LOCATIONS = {
                             {
                                 id:1010,
                                 name : "Project Name.txt",
-                                icon : "/icons/#",
+                                icon : "/icons/file.png",
                                 kind:"file",
-                                fileType:"txt",
+                                fileType:"txtfile",
                                 position:"top-5 left-10",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
+
+                            {
+                                id:1011,
+                                name : "Project Name.txt",
+                                icon : "/icons/file.png",
+                                kind:"file",
+                                fileType:"imgfile",
+                                position:"top-5 left-50",
                                 description:[
                                     "Write Complete interactive catchy description here",
                                     "in multiple points",
@@ -198,7 +213,7 @@ export const LOCATIONS = {
                             {
                                 id:1020,
                                 name : "Project Name.txt",
-                                icon : "/icons/#",
+                                icon : "/icons/file.png",
                                 kind:"file",
                                 fileType:"txt",
                                 position:"top-5 left-10",
@@ -209,10 +224,24 @@ export const LOCATIONS = {
                                     "in multiple points",
                                 ],
                             },
+                            {
+                                id:1021,
+                                name : "Project Name.txt",
+                                icon : "/icons/file.png",
+                                kind:"file",
+                                fileType:"txt",
+                                position:"top-5 left-50",
+                                description:[
+                                    "Write Complete interactive catchy description here",
+                                    "in multiple points",
+                                    "in multiple points",
+                                    "in multiple points",
+                                ],
+                            },
                         ],
                     },//end of project 2
 
-                    //> project 2
+                    //> project 3
                     {
                         id:103,
                         name: "Portfolio OS",
@@ -224,14 +253,14 @@ export const LOCATIONS = {
                             right:0,
                             bottom:0,
                         },
-                        windowPosition : "top-[20vh] right-15",
                         children : [
                             {
                                 id:1030,
-                                name : "Project Name.txt",
-                                icon : "/icons/#",
+                                name : "portfolio.com",
+                                icon : "/icons/safari.png",
                                 kind:"file",
-                                fileType:"txt",
+                                fileType:"url",
+                                href:"https://syedifham.netlify.app",
                                 position:"top-5 left-10",
                                 description:[
                                     "Write Complete interactive catchy description here",
@@ -241,7 +270,7 @@ export const LOCATIONS = {
                                 ],
                             },
                         ],
-                    },//end of project 2
+                    },//end of project 3
 
                 ],//end of child
 
@@ -338,21 +367,21 @@ export const LOCATIONS = {
 
             RESUME_LOCATION  :{
                 id : 3,
-                type:"resume",
                 name : "Resume",
                 icon : "/icons/file.png",
                 kind :"folder",
                 children : [
                   // resume section
                     {
-                        id:5,
+                        id:301,
+                        type:"resume",
                         name: "resume.pdf",
                         icon : "/icons/resume.png",
-                        kind:"folder",
+                        kind:"pdf",
                         position : "top-10 left-10",
                         windowPosition : "top-[15vh] right-20",
 
-                    },//end of project 1
+                    },
 
                 ],//end of child
 
@@ -367,7 +396,7 @@ export const LOCATIONS = {
                 children : [
                     //> project 1
                     {
-                        id:5,
+                        id:401,
                         name: "Application Name",
                         icon : "/icons/file.png",
                         kind:"folder",
@@ -375,7 +404,7 @@ export const LOCATIONS = {
                         windowPosition : "top-[15vh] right-20",
                         children : [
                             {
-                                id:1,
+                                id:4010,
                                 name : "Project Name.txt",
                                 icon : "/icons/#",
                                 kind:"file",
@@ -390,7 +419,7 @@ export const LOCATIONS = {
                             },
 
                             {
-                                id:2,
+                                id:4011,
                                 name : "Project Name.txt",
                                 icon : "/icons/#",
                                 kind:"file",
@@ -474,3 +503,37 @@ export const blogPost = [
         link : "#url"
     }  ,
 ];
+
+//contacts
+export const socials = [
+    {
+        id:1,
+        text:"Github",
+        icon:"/icons/github.png",
+        bg:"#181717",
+        link : "https://github.com/syed-ifham"
+    },
+    {
+        id:2,
+        text:"LeetCode",
+        icon:"/icons/leetcode.png",
+        bg:"#FFA116",
+        link : "https://leetcode.com/u/ifham786/"
+    },
+
+    {
+        id:3,
+        text:"Blog",
+        icon:"/icons/blog.png",
+        bg:"#EA4335",
+        link : "#"
+    },
+
+    {
+        id:4,
+        text:"LinkedIn",
+        icon:"/icons/linkedin.png",
+        bg:"#0A66C2",
+        link : "https://linkedin.com/in/syedifham"
+    },
+]

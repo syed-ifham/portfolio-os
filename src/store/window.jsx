@@ -9,7 +9,7 @@ export const useWindowStore  = create(immer((set)=>({
         windows : WINDOW_CONFIG,
         nextZIndex : INITIAL_Z_INDEX +1,
 
-    openWindow : (windowKey,data = null)=>set((state)=>{
+        openWindow : (windowKey,data = null)=>set((state)=>{
         const win = state.windows[windowKey];
         if(!win) {
             console.error("ERROR : Couldn't find app id : ",windowKey);
@@ -25,7 +25,10 @@ export const useWindowStore  = create(immer((set)=>({
 
         closeWindow : (windowKey)=>set((state)=>{
             const win = state.windows[windowKey];
-            if(!win)return;
+            if(!win) {
+                console.error("ERROR : Couldn't find app id : ",windowKey);
+                return;
+            }
 
             win.isOpen = false;
             win.zIndex =INITIAL_Z_INDEX;

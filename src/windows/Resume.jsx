@@ -27,7 +27,7 @@ const Resume = () => {
                     Resume.pdf
                 </h2>
 
-                <div className="w-25 flex justify-end">
+                <div className="w-25 flex justify-end ">
 
                     <a
                         href="/files/resume.pdf"
@@ -43,7 +43,9 @@ const Resume = () => {
                 </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto bg-[#e5e5e5] flex justify-center py-1.5">
+            <div className="flex-1 overflow-y-auto bg-[#e5e5e5] flex justify-center py-1.5
+            mac-scrollbar
+            ">
                 <Document
                     // file="/files/resume.pdf"
                     file={LOCATIONS.files.resume}

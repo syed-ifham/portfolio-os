@@ -4,9 +4,9 @@ import {WindowWrapper} from "#hoc/WindowWrapper.jsx";
 import {useLocationStore} from "#store/location.js";
 import {FINDER_LOCATION} from "#constants/index.js";
 import clsx from "clsx";
+import {useWindowStore} from "#store/window.jsx";
 
 const Finder = ()=>{
-
 
     const renderList = (name, items) => (
         <div className="mb-4">
@@ -42,9 +42,24 @@ const Finder = ()=>{
         </div>
     );
 
+    const {openWindow} = useWindowStore();
     const {activeLocation,setActiveLocation} = useLocationStore();
 
     const openItem = (item)=>{
+
+    if(item.kind === 'pdf'){
+        openWindow(item.type);
+    }
+    else if(item.kind === 'folder'){
+            setActiveLocation(item);
+    }
+    else if(['url'].includes(item.fileType) && item.href){
+       return window.open(item.href, '_blank');
+    }
+
+    else {
+        openWindow(`${item.fileType}${item.kind}`, item);
+    }
 
     };
 
@@ -55,7 +70,7 @@ const Finder = ()=>{
             {/*  Header */}
             <div className="relative px-4 h-10 flex items-center justify-betweenbg-[#f6f6f6]/90 backdrop-blur-md border-b border-gray-200/80 text-gray-600 select-none">
 
-                {/* Left: Window Controls & Navigation */}
+                {/* Left*/}
                 <div className="flex items-center gap-6 w-1/3">
                     <WindowsControls target="finder" />
 
@@ -68,12 +83,12 @@ const Finder = ()=>{
                     </div>
                 </div>
 
-                {/* Center: Title (Authentic Finder Style) */}
+                {/* Center*/}
                 <div className="flex items-center justify-center w-1/3">
                     <span className="font-bold text-gray-700 tracking-tight">Finder</span>
                 </div>
 
-                {/* Right: Tools & Search */}
+                {/* Right*/}
                 <div className="flex items-center justify-end gap-4 w-1/3">
                     <div className="flex items-center gap-3">
                         <LayoutGrid size={16} className="cursor-pointer hover:text-gray-900" />

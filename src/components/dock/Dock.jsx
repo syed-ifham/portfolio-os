@@ -99,11 +99,6 @@ const Dock = () => {
                     dockApps.map(({ id, name, icon, canOpen }) => (
                         <div key={id} className="group relative flex justify-center size-10 3xl:size-20">
 
-                            {/*hover effect on dock app*/}
-                            {/*<div className="absolute -top-14 px-3 py-1.5 bg-gray-900/90 text-white text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap shadow-md z-50">*/}
-                            {/*    {name}*/}
-                            {/*</div>*/}
-
                             <Tooltip text={name} position="top"/>
 
                             <button
