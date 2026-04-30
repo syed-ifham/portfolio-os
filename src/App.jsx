@@ -1,8 +1,6 @@
 import Navbar from "#components/navbar/Navbar.jsx";
 import Welcome from "#components/home/Welcome.jsx";
 import Dock from "#components/dock/Dock.jsx";
-import gsap from "gsap";
-import {Draggable} from "gsap/Draggable";
 import {TerminalWindow} from "#windows/Terminal.jsx";
 import {SafariWindow} from "#windows/Safari.jsx";
 import {ResumeWindow} from "#windows/Resume.jsx";
@@ -12,7 +10,6 @@ import {ImageWindow} from "#windows/Image.jsx";
 import {ContactWindow} from "#windows/Contact.jsx";
 import {Home} from "#components/home/Home.jsx";
 
-gsap.registerPlugin(Draggable);
 
 function App() {
     return (

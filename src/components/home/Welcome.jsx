@@ -99,17 +99,20 @@ const Welcome = () => {
                 ref={containerRef}
                 className="flex flex-col items-center pointer-events-auto py-12 px-10">
                 <p
+
                     className="text-blac mb-1"
                     style={{ fontFamily: "'Inter', sans-serif" }}>
                     {renderText("hey, I'm Ifham welcome to my", "text-3xl tracking-tight", FONT_WEIGHTS.subtitle.default)}
                 </p>
 
                 <h1
+
                     className="text-black mt-2"
                     style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {renderText("portfolio.", "text-8xl leading-none italic tracking-tight", FONT_WEIGHTS.title.default)}
+                    {renderText("portfolio.", "text-8xl leading-none italic  tracking-tight", FONT_WEIGHTS.title.default)}
                 </h1>
             </div>
+
         </section>
     );
 }
