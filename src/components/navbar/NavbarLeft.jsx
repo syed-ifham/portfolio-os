@@ -3,12 +3,27 @@ import {useWindowStore} from "#store/window.jsx";
 
 const NavbarLeft = () => {
 
-    const {openWindow} = useWindowStore();
+    const {windows, openWindow, closeWindow} = useWindowStore();
 
+    const toggleApp = (app) => {
+
+        const window = windows[app.type];
+        if (!window) {
+            console.error(`window not found! ${app.id}`);
+            return;
+        }
+
+        if (window.isOpen) {
+            closeWindow(app.type);
+        } else {
+            openWindow(app.type);
+        }
+
+    };
 
     return (
         <div className="flex items-center gap-3">
-            <img src="/icons/apple.png" alt="Logo" className="h-4 object-contain cursor-pointer" />
+            <img src="/icons/apple.png" alt="Logo" className="h-4 object-contain cursor-pointer"/>
 
             <p className="font-bold text-sm cursor-pointer hover:bg-black/10 px-2 rounded transition-colors">
                 Ifham's Portfolio
@@ -16,10 +31,10 @@ const NavbarLeft = () => {
 
             <ul className="hidden sm:flex items-center gap-1.5">
                 {
-                    navLinks.map((link)=>(
+                    navLinks.map((link) => (
                         <li key={link.id}
 
-                            onClick={()=>openWindow(link.type)}
+                            onClick={() => toggleApp(link)}
 
                             className="cursor-pointer text-xs font-normal hover:bg-black/10 hover:underline px-2 rounded transition-colors">
                             <a href={link.url}>

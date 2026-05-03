@@ -1,6 +1,6 @@
 import {WindowWrapper} from "#hoc/WindowWrapper.jsx";
 import {WindowsControls} from "#components/dock/WindowsControls.jsx";
-import {socials} from "#constants/index.js";
+import {LOCATIONS, socials} from "#constants/index.js";
 
 const Contact = () => {
 
@@ -19,12 +19,11 @@ const Contact = () => {
 
             {/* Window Body */}
             <div className="p-6 space-y-4">
-
                 <div className="flex items-center gap-5 sm:gap-6">
 
                     <div className="relative shrink-0">
                         <img
-                            src="/images/ifham.png"
+                            src={LOCATIONS.profile}
                             alt="Ifham"
                             className="w-18 h-22 rounded-full object-cover shadow-sm border border-gray-200"
                         />
@@ -92,4 +91,7 @@ const Contact = () => {
 export const ContactWindow = WindowWrapper(Contact, 'contact',{
     height:380,
     width:600,
+    x:450,
+    y:150
+
 });

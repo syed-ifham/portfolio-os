@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 body {
     background-image: url("/bg/macos-tahoe.jpg");
     background-size: cover;
@@ -8,17 +7,14 @@ body {
     background-repeat: no-repeat;
 }
 
-
 html {
-    font-size: 17px;
+    font-size: clamp(14px, 2vw, 16px);
 }
-
-
 @layer base {
     main {
-        @apply w-dvw h-dvh overflow-hidden flex flex-col;
-    }
 
+        @apply w-dvw h-dvh  flex flex-col;
+    }
 }
 
 @layer utilities {
@@ -27,6 +23,7 @@ html {
         scrollbar-width: thin;
         scrollbar-color: rgba(107, 114, 128, 0.5) transparent;
     }
+
     .mac-scrollbar::-webkit-scrollbar {
         width: 14px;
         height: 14px;

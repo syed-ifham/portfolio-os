@@ -1,20 +1,18 @@
 import {WindowsControls} from "#components/dock/WindowsControls.jsx";
-import { ChevronLeft, ChevronRight, Search, Columns, LayoutGrid, Share } from 'lucide-react';
+import {ChevronLeft, ChevronRight, Search, Columns, LayoutGrid, Share} from 'lucide-react';
 import {WindowWrapper} from "#hoc/WindowWrapper.jsx";
 import {useLocationStore} from "#store/location.js";
 import {FINDER_LOCATION} from "#constants/index.js";
 import clsx from "clsx";
 import {useWindowStore} from "#store/window.jsx";
 
-const Finder = ()=>{
+const Finder = () => {
 
     const renderList = (name, items) => (
         <div className="mb-4">
-
             <h3 className="px-3 mb-1 text-[11px] font-bold text-gray-400 uppercase tracking-tight">
                 {name}
             </h3>
-
             <ul className="space-y-px">
                 {items.map((item) => (
                     <li
@@ -43,23 +41,19 @@ const Finder = ()=>{
     );
 
     const {openWindow} = useWindowStore();
-    const {activeLocation,setActiveLocation} = useLocationStore();
+    const {activeLocation, setActiveLocation} = useLocationStore();
 
-    const openItem = (item)=>{
+    const openItem = (item) => {
 
-    if(item.kind === 'pdf'){
-        openWindow(item.type);
-    }
-    else if(item.kind === 'folder'){
+        if (item.kind === 'pdf') {
+            openWindow(item.type);
+        } else if (item.kind === 'folder') {
             setActiveLocation(item);
-    }
-    else if(['url'].includes(item.fileType) && item.href){
-       return window.open(item.href, '_blank');
-    }
-
-    else {
-        openWindow(`${item.fileType}${item.kind}`, item);
-    }
+        } else if (['url'].includes(item.fileType) && item.href) {
+            return window.open(item.href, '_blank');
+        } else {
+            openWindow(`${item.fileType}${item.kind}`, item);
+        }
 
     };
 
@@ -68,18 +62,20 @@ const Finder = ()=>{
         flex flex-col text-sm shadow-2xl">
 
             {/*  Header */}
-            <div className="relative px-4 h-10 flex items-center justify-betweenbg-[#f6f6f6]/90 backdrop-blur-md border-b border-gray-200/80 text-gray-600 select-none">
+            <div
+                className="relative px-4 h-10 flex items-center justify-betweenbg-[#f6f6f6]/90 backdrop-blur-md border-b border-gray-200/80 text-gray-600 select-none">
 
                 {/* Left*/}
                 <div className="flex items-center gap-6 w-1/3">
-                    <WindowsControls target="finder" />
+                    <WindowsControls target="finder"/>
 
                     <div className="flex items-center gap-4 ml-2">
                         <div className="flex items-center gap-3">
-                            <ChevronLeft size={18} className="text-gray-400 cursor-default" />
-                            <ChevronRight size={18} className="text-gray-400 cursor-default" />
+                            <ChevronLeft size={18} className="text-gray-400 cursor-default"/>
+                            <ChevronRight size={18} className="text-gray-400 cursor-default"/>
                         </div>
-                        <Columns size={16} className="hover:bg-gray-200 p-0.5 rounded transition-colors cursor-pointer" />
+                        <Columns size={16}
+                                 className="hover:bg-gray-200 p-0.5 rounded transition-colors cursor-pointer"/>
                     </div>
                 </div>
 
@@ -91,12 +87,12 @@ const Finder = ()=>{
                 {/* Right*/}
                 <div className="flex items-center justify-end gap-4 w-1/3">
                     <div className="flex items-center gap-3">
-                        <LayoutGrid size={16} className="cursor-pointer hover:text-gray-900" />
-                        <Share size={16} className="cursor-pointer hover:text-gray-900" />
+                        <LayoutGrid size={16} className="cursor-pointer hover:text-gray-900"/>
+                        <Share size={16} className="cursor-pointer hover:text-gray-900"/>
                     </div>
 
                     <div className="relative flex items-center">
-                        <Search size={13} className="absolute left-2 text-gray-400" />
+                        <Search size={13} className="absolute left-2 text-gray-400"/>
                         <input
                             type="text"
                             placeholder="Search"
@@ -109,7 +105,7 @@ const Finder = ()=>{
             </div>
 
             {/*Body*/}
-             <div className="bg-white flex h-full">
+            <div className="bg-white flex h-full">
 
                 {/* Sidebar */}
                 <div className="w-35 bg-[#f6f6f6] border-r border-gray-200 flex flex-col p-2 select-none">
@@ -117,48 +113,48 @@ const Finder = ()=>{
                     {renderList("Work", FINDER_LOCATION.work.children)}
                 </div>
 
-                 {/* Content Area */}
-                 <ul className="relative w-full h-full p-4 overflow-hidden select-none">
-                     {activeLocation.children.map((item) => (
-                         <li
-                             key={item.id}
-                             className={clsx(
-                                 "absolute flex flex-col  items-center group cursor-default w-24",
-                                 item.position
-                             )}
-                             style={{
-                                 top:item.position.top,
-                                 left:item.position.left,
-                             }}
-                             onClick={() => openItem(item)}
-                         >
-                             <div className="relative transition-transform active:scale-95">
-                                 <img
-                                     src={item.icon}
-                                     alt={item.name}
-                                     className="w-16 h-16  object-contain drop-shadow-md"
-                                 />
-                             </div>
+                {/* Content Area */}
+                <ul className="relative w-full h-full p-4 overflow-hidden select-none">
+                    {activeLocation.children.map((item) => (
+                        <li
+                            key={item.id}
+                            className={clsx(
+                                "absolute flex flex-col  items-center group cursor-default w-24",
+                                item.position
+                            )}
+                            style={{
+                                top: item.position.top,
+                                left: item.position.left,
+                            }}
+                            onClick={() => openItem(item)}
+                        >
+                            <div className="relative transition-transform active:scale-95">
+                                <img
+                                    src={item.icon}
+                                    alt={item.name}
+                                    className="w-16 h-16  object-contain drop-shadow-md"
+                                />
+                            </div>
 
-                             <p className=" px-1.5 py-0.5 mt-1 text-center text-[12px] leading-tight text-gray-900
+                            <p className=" px-1.5 py-0.5 mt-1 text-center text-[12px] leading-tight text-gray-900
                           rounded-sm font-medium max-w-full wrap-break-word line-clamp-2
                           group-active:bg-[#1a73e8] group-active:text-white">
-                                 {item.name}
-                             </p>
-                         </li>
-                     ))}
-                 </ul>
+                                {item.name}
+                            </p>
+                        </li>
+                    ))}
+                </ul>
 
 
             </div>
         </div>
     </>
 }
-export const FinderWindow = WindowWrapper(Finder,'finder',
-     {
-         width: 650,
-         height: 400,
-         x: 350,
-         y:180
-     });
+export const FinderWindow = WindowWrapper(Finder, 'finder',
+    {
+        width: 650,
+        height: 400,
+        x: 350,
+        y: 180
+    });
 
