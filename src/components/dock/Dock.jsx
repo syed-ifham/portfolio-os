@@ -8,6 +8,21 @@ import {useLocationStore} from "#store/location.js";
 
 gsap.registerPlugin(useGSAP);
 
+// Throttle with requestAnimationFrame for optimal performance
+const throttleRAF = (func) => {
+    let frameId = null;
+    let lastArgs = null;
+    return function(...args) {
+        lastArgs = args;
+        if (!frameId) {
+            frameId = requestAnimationFrame(() => {
+                func.apply(this, lastArgs);
+                frameId = null;
+            });
+        }
+    };
+};
+
 const Dock = () => {
 
     //global storage
@@ -86,7 +101,7 @@ const Dock = () => {
         };
 
         const handleMouseMove = (e) => {
-            animateIcons(e.clientX);
+            throttleRAF(animateIcons)(e.clientX);
         };
 
         const resetIcons = () => {

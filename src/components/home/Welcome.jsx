@@ -9,6 +9,21 @@ const FONT_WEIGHTS = {
     title: { min: 400, max: 900, default: 400 },
 };
 
+// Throttle with requestAnimationFrame for optimal performance
+const throttleRAF = (func) => {
+    let frameId = null;
+    let lastArgs = null;
+    return function(...args) {
+        lastArgs = args;
+        if (!frameId) {
+            frameId = requestAnimationFrame(() => {
+                func.apply(this, lastArgs);
+                frameId = null;
+            });
+        }
+    };
+};
+
 const renderText = (text, className, baseWeight) => {
     return [...text].map((char, i) => (
         <span
@@ -31,7 +46,7 @@ const Welcome = () => {
         const subtitleLetters = container.querySelectorAll("p span");
         const titleLetters = container.querySelectorAll("h1 span");
 
-        const handleMouseMove = (e) => {
+        const handleMouseMoveLogic = (e) => {
             const mouseX = e.clientX;
 
             subtitleLetters.forEach((letter) => {
@@ -66,6 +81,9 @@ const Welcome = () => {
                 });
             });
         };
+
+        // Throttle mousemove to 1 frame per animation frame (~16ms at 60fps)
+        const handleMouseMove = throttleRAF(handleMouseMoveLogic);
 
         const handleMouseLeave = () => {
             gsap.to(subtitleLetters, {

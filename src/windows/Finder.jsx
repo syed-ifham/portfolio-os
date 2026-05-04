@@ -5,10 +5,12 @@ import {useLocationStore} from "#store/location.js";
 import {LOCATIONS} from "#constants/index.js";
 import clsx from "clsx";
 import {useWindowStore} from "#store/window.jsx";
+import { useState } from "react";
 
 const Finder = () => {
     const openWindow = useWindowStore(s => s.openWindow);
     const {activeLocation, setActiveLocation} = useLocationStore();
+    const [searchQuery, setSearchQuery] = useState("");
 
     const openItem = (item) => {
 
@@ -42,7 +44,7 @@ const Finder = () => {
                         onClick={() => setActiveLocation(item)}
                         className={clsx(
                             "flex items-center gap-2 px-3 py-1.5 rounded-md cursor-default transition-colors",
-                            item.id === activeLocation.id
+                            item.id === activeLocation?.id
                                 ? "bg-[#e3effd] text-[#1a73e8]"
                                 : "text-[#4b4b4b] hover:bg-gray-200/50"
                         )}
@@ -99,6 +101,8 @@ const Finder = () => {
                         <input
                             type="text"
                             placeholder="Search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                             className="bg-gray-200/50 border-none rounded-md py-1 pl-7 pr-2 w-32
                      focus:ring-0 text-[12px] placeholder-gray-500 outline-none"
                         />
@@ -117,7 +121,7 @@ const Finder = () => {
 
                 {/* Content Area */}
                 <ul className="relative w-full h-full p-4 overflow-hidden select-none">
-                    {activeLocation.children.map((item) => (
+                    {activeLocation?.children?.map((item) => (
                         <li
                             key={item.id}
                             className={clsx(
@@ -128,8 +132,8 @@ const Finder = () => {
                                 item.position
                             )}
                             style={{
-                                top: item.position.top,
-                                left: item.position.left,
+                                top: item.position?.top ?? 0,
+                                left: item.position?.left ?? 0,
                             }}
                             onClick={() => openItem(item)}
                         >

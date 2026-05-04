@@ -23,7 +23,7 @@ export const Home = () => {
     };
 
     useGSAP(() => {
-        Draggable.create(".folder", {
+        const draggables = Draggable.create(".folder", {
             type: "x,y",
             zIndexBoost: false,
 
@@ -37,6 +37,12 @@ export const Home = () => {
             }
 
         });
+
+        // ✅ Cleanup: Kill all draggables on unmount
+        return () => {
+            draggables.forEach(d => d.kill());
+        };
+
     }, []);
 
     return (

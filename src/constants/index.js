@@ -123,7 +123,8 @@ export const socials = [
 const FINDER_LOCATION = {
   work: {
 
-    id: 1, type: "work", name: "Work", icon: "/icons/work.png", kind: "folder", children: [//project 1
+    id: 1, type: "work", name: "Work", icon: "/icons/work.png", kind: "folder",
+    children: [//project 1
       {
         id: 101, name: "Cal AI", icon: "/icons/mac-folder.png", kind: "folder", position: {
           top: 50, left: 300,
@@ -139,8 +140,8 @@ const FINDER_LOCATION = {
             "kind": "file",
             "fileType": "txt",
             "position": {
-              x: 300,
-              y: 100
+              top: 40,
+              left: 40
             },
             "links": [
               {"label": "GitHub Repository", "url": "#", "icon": "🔗"},
@@ -156,7 +157,10 @@ const FINDER_LOCATION = {
             "kind": "link",
             "fileType": "url",
             href: "https://syedifham.netlify.app",
-            "position": "top-49 left-15"
+            "position": {
+              top: 35,
+              left: 260
+            }
           },
           {
             "id": 1012,
@@ -165,7 +169,10 @@ const FINDER_LOCATION = {
             "kind": "link",
             "fileType": "url",
             href: "https://syedifham.netlify.app",
-            "position": "top-45 left-65"
+            "position": {
+              top: 200,
+              left: 20
+            }
           }, {
             "id": 1013,
             "name": "Cal AI.png",
@@ -173,12 +180,14 @@ const FINDER_LOCATION = {
             "imageUrl": "/images/calorie.png",
             "kind": "file",
             "fileType": "img",
-            "position": "top-12 left-60"
+            "position": {
+              top: 155,
+              left: 165
+            }
           },
 
         ], //> end project1
       },
-
 
       //> project 2
       {
@@ -196,8 +205,8 @@ const FINDER_LOCATION = {
             "kind": "file",
             "fileType": "txt",
             "position": {
-              x: 500,
-              y: 150
+              top: 45,
+              left: 50
             },
             "links": [
               {"label": "GitHub Repository", "url": "#", "icon": "🔗"},
@@ -214,7 +223,10 @@ const FINDER_LOCATION = {
             "kind": "link",
             "href": "https://syedifham.netlify.app",
             "fileType": "url",
-            "position": "top-10 left-60"
+            "position": {
+              top: 200,
+              left: 50
+            }
           },
           {
             "id": 1022,
@@ -223,7 +235,10 @@ const FINDER_LOCATION = {
             "kind": "link",
             href: "https://syedifham.netlify.app",
             "fileType": "url",
-            "position": "top-50 left-20"
+            "position": {
+              top: 45,
+              left: 220
+            }
           },
           {
             "id": 1023,
@@ -232,7 +247,10 @@ const FINDER_LOCATION = {
             "imageUrl": "/images/expense_dashboard.png",
             "kind": "file",
             "fileType": "img",
-            "position": "top-40 left-60"
+            "position": {
+              top: 170,
+              left: 250
+            }
           }
         ],
       },//end of project 2
@@ -258,8 +276,8 @@ const FINDER_LOCATION = {
             "kind": "file",
             "fileType": "txt",
             "position": {
-              x: 200,
-              y: 200
+              top: 55,
+              left: 30
             },
             "links": [
               {"label": "Live Demo", "url": "https://github.com/ifham/portfolio-os", "icon": "🔗"},
@@ -281,7 +299,10 @@ const FINDER_LOCATION = {
             "kind": "link",
             href: "https://syedifham.netlify.app",
             "fileType": "url",
-            "position": "top-13 left-58"
+            "position": {
+              top: 190,
+              left: 45
+            }
           },
           {
             id: 1032,
@@ -290,7 +311,10 @@ const FINDER_LOCATION = {
             kind: "link",
             fileType: "url",
             href: "https://syedifham.netlify.app",
-            position: "top-44 left-60",
+            position: {
+              top: 185,
+              left: 240
+            },
             description: ["Write Complete interactive catchy description here", "in multiple points", "in multiple points", "in multiple points",],
           },
           {
@@ -300,7 +324,10 @@ const FINDER_LOCATION = {
             imageUrl: "/images/portfolio.png",
             "kind": "file",
             "fileType": "img",
-            position: "top-45 left-20",
+            position: {
+              top: 35,
+              left: 200
+            },
           }
 
         ],
@@ -412,4 +439,6 @@ export const WINDOW_CONFIG = {
   resume: {isOpen: false, zIndex: Z_INDEX.windowInitial, data: null},
   txtfile: {isOpen: false, zIndex: Z_INDEX.windowInitial, data: null},
   imgfile: {isOpen: false, zIndex: Z_INDEX.windowInitial, data: null},
+  pngfile: {isOpen: false, zIndex: Z_INDEX.windowInitial, data: null},
+  urllink: {isOpen: false, zIndex: Z_INDEX.windowInitial, data: null},
 };

@@ -30,27 +30,35 @@ export const WindowWrapper = (Component, windowKey, options = {}) => {
                 {scale: 1, opacity: 1, y: 0, duration: 0.25, ease: "power3.out"}
             );
 
-            const updateBounds = () => {
-                const [instance] = Draggable.create(el, {
-                    type: "x,y",
-                    bounds: {
-                        top: 25,
-                        left: 10,
-                        width: window.innerWidth - 15,
-                        height: window.innerHeight - 35
-                    },
-                    onPress: () => focusWindow(windowKey),
-                });
-                return instance;
-            };
+            // ✅ Create Draggable instance ONCE
+            const [draggableInstance] = Draggable.create(el, {
+                type: "x,y",
+                bounds: {
+                    top: 25,
+                    left: 10,
+                    width: window.innerWidth - 15,
+                    height: window.innerHeight - 35
+                },
+                onPress: () => focusWindow(windowKey),
+            });
 
-            let draggableInstance = updateBounds();
-
-            // Re-calculate bounds on resize or fullscreen change
-            const handleResize = () => {
-                draggableInstance?.kill();
-                draggableInstance = updateBounds();
-            };
+            // ✅ Debounce resize to prevent rapid calls stacking
+            const handleResize = (() => {
+                let timeoutId;
+                return () => {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        if (draggableInstance) {
+                            draggableInstance.applyBounds({
+                                top: 25,
+                                left: 10,
+                                width: window.innerWidth - 15,
+                                height: window.innerHeight - 35
+                            });
+                        }
+                    }, 250);
+                };
+            })();
 
             window.addEventListener("resize", handleResize);
             document.addEventListener("fullscreenchange", handleResize);
