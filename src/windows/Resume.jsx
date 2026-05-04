@@ -47,7 +47,6 @@ const Resume = () => {
             mac-scrollbar
             ">
                 <Document
-                    // file="/files/resume.pdf"
                     file={LOCATIONS.files.resume}
                     className="flex flex-col items-center drop-shadow-lg"
                     loading={<div className="text-gray-500 text-sm">Loading PDF...</div>}

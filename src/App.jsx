@@ -10,20 +10,19 @@ import {ContactWindow} from "#windows/Contact.jsx";
 import {Home} from "#components/home/Home.jsx";
 import {YoutubeWindow} from "#windows/Youtube.jsx";
 import {SafariWindow} from "#windows/Safari.jsx";
+import FullScreenNotification from "#components/utility/FullScreenNotification.jsx";
 
 
 function App() {
     return (
         <main>
+            <FullScreenNotification />
             <Navbar/>
             <Home/>
             <Welcome/>
             <Dock/>
 
             <ResumeWindow/>
-            {/*work on it*/}
-            <TextWindow/>
-            {/*<ImageWindow/>*/}
 
             <YoutubeWindow/>
             <FinderWindow/>
@@ -32,6 +31,9 @@ function App() {
             <TerminalWindow/>
 
 
+            {/*work on it*/}
+            <TextWindow/>
+            <ImageWindow/>
 
 
 

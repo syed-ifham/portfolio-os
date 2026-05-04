@@ -2,7 +2,7 @@
 
 body {
     background-image: url("/bg/macos-tahoe.jpg");
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -12,8 +12,7 @@ html {
 }
 @layer base {
     main {
-
-        @apply w-dvw h-dvh  flex flex-col;
+        @apply w-dvw h-dvh overflow-hidden flex flex-col;
     }
 }
 

@@ -1,7 +1,7 @@
-import { useWindowStore } from "#store/window.jsx";
+import {useWindowStore} from "#store/window.jsx";
 
-export const WindowsControls = ({ target }) => {
-    const { closeWindow } = useWindowStore();
+export const WindowsControls = ({target}) => {
+    const closeWindow = useWindowStore(s => s.closeWindow);
 
     return (
         <div className="flex items-center gap-2">

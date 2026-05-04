@@ -1,13 +1,59 @@
 import {useRef} from "react";
-import {dockApps, Z_INDEX} from "#constants";
+import {dockApps, LOCATIONS, Z_INDEX} from "#constants";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {useWindowStore} from "#store/window.jsx";
 import {Tooltip} from "#components/utility/Tooltip.jsx";
+import {useLocationStore} from "#store/location.js";
 
 gsap.registerPlugin(useGSAP);
 
 const Dock = () => {
+
+    //global storage
+    const {openWindow, closeWindow, focusWindow, windows} = useWindowStore();
+    const {activeLocation, setActiveLocation, resetActiveLocation} = useLocationStore();
+
+    //triggers isOpen state update
+    const toggleApp = (app) => {
+        if (!app.canOpen) {
+            console.info(`app ${app.id} cannot be open`);
+            return;
+        }
+
+        const targetWindowId = (app.id === 'finder' || app.id === 'trash') ? 'finder' : app.id;
+
+        const window = windows[targetWindowId];
+        if (!window) {
+            console.error(`window not found! ${targetWindowId}`);
+            return;
+        }
+
+        if (app.id === 'trash') {
+            if (!window.isOpen) openWindow(targetWindowId);
+            if (activeLocation !== LOCATIONS.finder.trash) {
+                setActiveLocation(LOCATIONS.finder.trash);
+                focusWindow(targetWindowId);
+                return;
+            }
+        }
+
+        if (app.id === 'finder') {
+            if (activeLocation !== LOCATIONS.finder.work) {
+                resetActiveLocation();
+                focusWindow(targetWindowId);
+
+                return;
+            }
+        }
+
+
+        if (window.isOpen) {
+            closeWindow(targetWindowId);
+        } else {
+            openWindow(targetWindowId);
+        }
+    };
 
     //animation
     const dockRef = useRef(null);
@@ -59,30 +105,6 @@ const Dock = () => {
             dock.removeEventListener("mouseleave", resetIcons);
         };
     }, []);
-
-    //global storage
-    const {openWindow, closeWindow, windows} = useWindowStore();
-
-    //triggers isOpen state update
-    const toggleApp = (app) => {
-        if (!app.canOpen) {
-            console.info(`app ${app.id} cannot be open`);
-            return;
-        }
-
-        const window = windows[app.id];
-        if (!window) {
-            console.error(`window not found! ${app.id}`);
-            return;
-        }
-
-        if (window.isOpen) {
-            closeWindow(app.id);
-        } else {
-            openWindow(app.id);
-        }
-    };
-
     return (<section id="dock" className="absolute bottom-4 left-1/2 -translate-x-1/2  select-none max-sm:hidden"
                      style={{zIndex: Z_INDEX.dock}}>
         <div

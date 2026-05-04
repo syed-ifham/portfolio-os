@@ -2,11 +2,33 @@ import {WindowsControls} from "#components/dock/WindowsControls.jsx";
 import {ChevronLeft, ChevronRight, Search, Columns, LayoutGrid, Share} from 'lucide-react';
 import {WindowWrapper} from "#hoc/WindowWrapper.jsx";
 import {useLocationStore} from "#store/location.js";
-import {FINDER_LOCATION} from "#constants/index.js";
+import {LOCATIONS} from "#constants/index.js";
 import clsx from "clsx";
 import {useWindowStore} from "#store/window.jsx";
 
 const Finder = () => {
+    const openWindow = useWindowStore(s => s.openWindow);
+    const {activeLocation, setActiveLocation} = useLocationStore();
+
+    const openItem = (item) => {
+
+        if (item.kind === 'resume') {
+            openWindow(item.type);
+        }
+        else if (item.kind === 'folder') {
+            setActiveLocation(item);
+        }
+        else if (['url'].includes(item.fileType) && item.href) {
+            return window.open(item.href, '_blank');
+        }
+        else if(item.kind === 'img'){
+            openWindow(`${item.fileType}${item.kind}`, item);
+        }
+        else {
+            openWindow(`${item.fileType}${item.kind}`, item);
+        }
+
+    };
 
     const renderList = (name, items) => (
         <div className="mb-4">
@@ -28,8 +50,7 @@ const Finder = () => {
                         <img
                             src={item.icon}
                             className="w-3 h-3 object-contain"
-                            alt={item.name}
-                        />
+                            alt={item.name}/>
 
                         <p className="text-[13px] font-medium truncate">
                             {item.name}
@@ -40,30 +61,12 @@ const Finder = () => {
         </div>
     );
 
-    const {openWindow} = useWindowStore();
-    const {activeLocation, setActiveLocation} = useLocationStore();
-
-    const openItem = (item) => {
-
-        if (item.kind === 'pdf') {
-            openWindow(item.type);
-        } else if (item.kind === 'folder') {
-            setActiveLocation(item);
-        } else if (['url'].includes(item.fileType) && item.href) {
-            return window.open(item.href, '_blank');
-        } else {
-            openWindow(`${item.fileType}${item.kind}`, item);
-        }
-
-    };
-
     return <>
         <div className="w-full h-full bg-white rounded-xl overflow-hidden
         flex flex-col text-sm shadow-2xl">
 
             {/*  Header */}
-            <div
-                className="relative px-4 h-10 flex items-center justify-betweenbg-[#f6f6f6]/90 backdrop-blur-md border-b border-gray-200/80 text-gray-600 select-none">
+            <div className="relative px-4 h-10 flex items-center justify-between bg-[#f6f6f6]/90 backdrop-blur-md border-b border-gray-200/80 text-gray-600 select-none">
 
                 {/* Left*/}
                 <div className="flex items-center gap-6 w-1/3">
@@ -106,11 +109,10 @@ const Finder = () => {
 
             {/*Body*/}
             <div className="bg-white flex h-full">
-
                 {/* Sidebar */}
                 <div className="w-35 bg-[#f6f6f6] border-r border-gray-200 flex flex-col p-2 select-none">
-                    {renderList("Favorites", Object.values(FINDER_LOCATION))}
-                    {renderList("Work", FINDER_LOCATION.work.children)}
+                    {renderList("Favorites", Object.values(LOCATIONS.finder))}
+                    {renderList("Work", LOCATIONS.finder.work.children)}
                 </div>
 
                 {/* Content Area */}
@@ -119,7 +121,10 @@ const Finder = () => {
                         <li
                             key={item.id}
                             className={clsx(
-                                "absolute flex flex-col  items-center group cursor-default w-24",
+                                "absolute flex flex-col items-center justify-center gap-1 group cursor-default w-32",
+                                "p-2 rounded-xl transition-all duration-200 border border-transparent",
+                                "hover:bg-black/8 hover:backdrop-blur-md hover:border-white/50 hover:shadow-sm",
+
                                 item.position
                             )}
                             style={{
@@ -128,33 +133,36 @@ const Finder = () => {
                             }}
                             onClick={() => openItem(item)}
                         >
-                            <div className="relative transition-transform active:scale-95">
+                            {/* Icon Wrapper */}
+                            <div className="relative transition-transform duration-100 active:scale-95">
                                 <img
                                     src={item.icon}
                                     alt={item.name}
-                                    className="w-16 h-16  object-contain drop-shadow-md"
+                                    className="w-16 h-16 object-contain drop-shadow-md"
                                 />
                             </div>
 
-                            <p className=" px-1.5 py-0.5 mt-1 text-center text-[12px] leading-tight text-gray-900
+                            {/* Text Label */}
+                            <p className="px-1.5 py-0.5 text-center text-[12px] leading-tight text-gray-900
                           rounded-sm font-medium max-w-full wrap-break-word line-clamp-2
-                          group-active:bg-[#1a73e8] group-active:text-white">
+                          transition-colors group-active:bg-[#0056FF] group-active:text-white">
                                 {item.name}
                             </p>
                         </li>
                     ))}
                 </ul>
 
-
             </div>
         </div>
     </>
 }
+
+
 export const FinderWindow = WindowWrapper(Finder, 'finder',
     {
         width: 650,
         height: 400,
-        x: 350,
+        x: 500,
         y: 180
     });
 

@@ -1,19 +1,19 @@
 import {create} from "zustand";
 import {immer} from "zustand/middleware/immer";
-import {FINDER_LOCATION} from "#constants/index.js";
+import {LOCATIONS} from "#constants/index.js";
 
-const DEFAULT_LOCATION = FINDER_LOCATION.work;
+const DEFAULT_LOCATION = LOCATIONS.finder.work;
 
-export const useLocationStore = create(immer((set)=>({
+export const useLocationStore = create(immer((set) => ({
 
-    activeLocation: DEFAULT_LOCATION,
+  activeLocation: DEFAULT_LOCATION,
 
-    setActiveLocation: (location = null) => set((state) =>{
-        state.activeLocation = location;
-    }),
+  setActiveLocation: (location) => set((state) => {
+    state.activeLocation = location ?? DEFAULT_LOCATION;
+  }),
 
-    resetActiveLocation: () => set((state) =>{
-        state.activeLocation = DEFAULT_LOCATION;
-    }),
+  resetActiveLocation: () => set((state) => {
+    state.activeLocation = DEFAULT_LOCATION;
+  }),
 
 })));

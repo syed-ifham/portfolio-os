@@ -1,4 +1,4 @@
-import { FINDER_LOCATION } from "#constants";
+import { LOCATIONS } from "#constants";
 import clsx from "clsx";
 import { useGSAP } from "@gsap/react";
 import { Draggable } from "gsap/Draggable";
@@ -9,7 +9,7 @@ import {useRef} from "react";
 
 gsap.registerPlugin(useGSAP, Draggable);
 
-const projects = FINDER_LOCATION.work?.children ?? [];
+const projects = LOCATIONS.finder.work?.children ?? [];
 
 export const Home = () => {
     const { setActiveLocation } = useLocationStore();
